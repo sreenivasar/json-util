@@ -1,9 +1,21 @@
 <div class="container">
-  <div class="row margin-top">
+  <div class="row margin-top-20">
     <label for="jsonTextArea">Paste your JSON</label>
-    <textarea class="form-control" id="jsonTextArea" rows="20"></textarea>
+    <textarea class="form-control" id="jsonTextArea" rows="10" [(ngModel)]="jsonText" name="jsonText"></textarea>
   </div>
-  <div class="row margin-top">
-    <button class="btn btn-success">Format</button>
+  <div class="row margin-top-20">
+    <button class="btn btn-success" (click)="formatJson(jsonText)">Format</button>
+  </div>
+  <div class="margin-top-20 alert alert-danger" role="alert" *ngIf="invalid">
+    <strong>OOPS! Check your input.</strong>
+  </div>
+  <div class="margin-top-20 alert alert-danger" role="alert" *ngIf="invalid">
+    <strong>{{errorMessage}}</strong>
+  </div>
+  <div class="margin-top-20 alert alert-success" role="alert" *ngIf="success">
+    <strong>Your are good.</strong>
+  </div>
+  <div class="margin-top-20" *ngIf="!invalid">
+    <pre>{{jsonString | json}}</pre>
   </div>
 </div>
